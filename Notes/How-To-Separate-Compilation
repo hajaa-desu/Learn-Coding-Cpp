@@ -1,0 +1,81 @@
+(1) HOW TO COMPILE
+
+compile all .cpp files only 
+
+...OBJECT FILES: Translate source files into object files. Object files contain the machine instructions corresponding to the c++ code. Use the -c flag. 
+
+		g++ -c product.cpp main.cpp
+	
+...LINKING: links together object files , as well as all the required code from the standard library to form an executable. use -o <name of executable>
+
+		g++ -o prodtest product.o main.o
+
+
+(2) THE SYNTAX
+
+header file contains:
+- definitions of classes
+- declarations of constants
+- declarations of nonmember functions
+- declarations of global variables 
+
+the source file contains:
+- definitions of member functions
+- definitions of non-member functions
+- definitions of global variables
+
+
+EXAMPLE:
+
+The Product class
+
+product.h
+	- contains INTERFACE
+product.cpp
+	- contains IMPLEMENTATION DETAILS
+
+in product.h:
+/* 1 */ include all headers necessary  for defining the class
+/* 2 */ prepocessor directives bracketing the file to protect against multiple inclusion
+/* 3 */ function comments are in header file since they are part of the interface, not the implementation
+--------------------------------------------------
+#ifndef PRODUCT_H /* 1 */
+#define PRODUCT_H
+
+#include <string> /* 2 */
+
+class Product
+{ 
+	public:
+		/**
+			Some documentation. /* 3 */
+		*/
+		Product(); 
+		...
+	private:
+		std::string name;
+		...
+}
+#endif
+--------------------------------------------------
+
+
+in product.cpp:
+/* 1 */ include the header file that defines the class - the compiler needs to know how the Product class is declared in order to compile the member functions
+--------------------------------------------------
+#include <iostream>
+#include "product.h" /* 1 */
+
+Product::Product() {
+	...
+}
+
+...
+
+void Product::read() {
+	...
+}
+
+...
+
+--------------------------------------------------

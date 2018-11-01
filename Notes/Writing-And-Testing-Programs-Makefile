@@ -1,0 +1,43 @@
+* see ../Tests/mkdirDemo folder for working example
+
+OPTION 1
+	Compile 2 source files using gcc, use -g to enable gdb and -Wall and -Wshadow (because it is recommended for some reason)
+
+		gcc -g -Wall -Wshadow main.c areDistint.c -o prog
+
+OPTION 2
+	Create object files first, then LINK the objet files
+
+		gcc -g -Wall -Wshadow -c areDistinct.c
+		gcc -g -Wall -Wshadow -c main.c
+		gcc -g -Wall -Wshadow areDistinct.o main.o -o prog
+
+OPTION 3 ... THE MAKE TOOL!
+
+	> Default input file name is 
+
+		Makefile
+
+	> if you want to name the file differently i.e. NotMakeFile ...
+
+		make -f NotMakeFile
+
+	> Makefiles decide which files need to be recompiled, based on modification time of the object files and relevant .c files e.g. "the compilation of areDistinct.o depends on the modification time of areDistinct.c" i.e. "if areDistinct.c mod time > areDistinct.o, then do ..." ("earliest" mod time is that the file doesn't exist)
+
+		areDistinct.o: areDistinct.c
+			gcc -g -Wall -Wshadow -c areDistinct.c
+
+	> Spaces cannot replace tabs!
+
+	> Comments! # this is a comment
+
+	> Symbols! $()
+
+		GCC = gcc
+		CFLAGS = -g -Wall -Wshadow
+
+		... : ...
+			$(GCC) $(CFLAGS) ...
+
+
+	

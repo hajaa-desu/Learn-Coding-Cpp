@@ -1,0 +1,28 @@
+* see ../Tests/mkdirDemo folder for working example
+
+1) Generate test cases
+
+	e.g. for areDistinct
+
+	> len is zero or not?
+	> arr either contains distinct elements or not
+
+	Therefore, the test cases are:
+
+	1. an empty file making len zero
+	2. a file with distinct numbers
+	3. a file with duplicate numbers
+
+2) What are we trying to test? 
+
+	areDistinct checks if the numbers in a file are distinct
+
+	How?
+
+	We can use sort and uniq in linux. sort orders number, uniq -d will print duplicate numbers in a file 
+
+	sort filename | uniq -d 
+
+3) Redirecting output
+	
+	$ ./prog inputs/input0 > outputs/output0

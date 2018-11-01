@@ -1,0 +1,14 @@
+GCC = g++
+GFLAGS = -g -Wall -Wshadow
+
+p5_6: p5_6.o Account.o Bank.o
+	$(GCC) $(GFLAGS) p5_6.o Account.o Bank.o -o p5_6
+
+p5_6.o: p5_6.cpp
+	$(GCC) $(GFLAGS) -c p5_6.cpp
+
+Account.o: Account.cpp
+	$(GCC) $(GFLAGS) -c Account.cpp
+
+Bank.o: Bank.cpp
+	$(GCC) $(GFLAGS) -c Bank.cpp
